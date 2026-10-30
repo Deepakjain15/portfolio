@@ -1,0 +1,641 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Deepak Jain, AI application engineer and full-stack developer in Bengaluru. RankOTest, Vidrohi Awaz, and AI workflow projects."><meta property="og:title" content="Deepak Jain | AI Application Engineer"><meta property="og:description" content="Full-stack and AI application engineer. Projects, journey and contact."><meta property="og:type" content="website"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0e15'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%236fd3e8'%3EDJ%3C/text%3E%3C/svg%3E"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deepak Jain | AI Application Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: one centered column, floating dock on top, hero with grid glow, timeline for work, bento grid for projects. */
+  :root {
+    --bg: #0a0e15;
+    --surface: #101722;
+    --line: #1f2a3a;
+    --fg: #e8edf5;
+    --muted: #94a1b5;
+    --accent: #6fd3e8;
+    --accent-ink: #04222a;
+    --glow: rgba(111, 211, 232, 0.16);
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f6f8fb; --surface: #ffffff; --line: #dde3ec; --fg: #0e1623; --muted: #4f5d73;
+      --accent: #0b7a94; --accent-ink: #ffffff; --glow: rgba(11, 122, 148, 0.12); color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f8fb; --surface: #ffffff; --line: #dde3ec; --fg: #0e1623; --muted: #4f5d73;
+    --accent: #0b7a94; --accent-ink: #ffffff; --glow: rgba(11, 122, 148, 0.12); color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 56px;
+    overflow-x: clip;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  /* Floating dock */
+  .dock {
+    position: fixed; z-index: 20;
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    left: 0; right: 0; margin-inline: auto;
+    width: max-content; max-width: calc(100% - 32px);
+    display: flex; gap: 4px; padding: 6px;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    border: 1px solid var(--line); border-radius: 999px;
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+  }
+  .dock a {
+    text-decoration: none; font-size: 14px; font-weight: 500; color: var(--muted);
+    padding: 7px 14px; border-radius: 999px; white-space: nowrap;
+    transition: color .15s, background .15s;
+  }
+  .dock a:hover { color: var(--fg); }
+  .dock a.on { background: var(--fg); color: var(--bg); }
+
+  /* Hero */
+  .hero { position: relative; padding-top: 128px; padding-bottom: 72px; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0 -50vw; z-index: -1;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 70% at 30% 20%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse 60% 70% at 30% 20%, #000 20%, transparent 75%);
+    opacity: .7;
+  }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono);
+    font-size: 12.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 12px; background: var(--surface); margin-bottom: 28px;
+  }
+  .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
+  .hero h1 { font-size: clamp(2.8rem, 9vw, 5.6rem); font-weight: 700; letter-spacing: -0.03em; }
+  .hero .role {
+    font-family: var(--font-display); font-size: clamp(1.2rem, 3.2vw, 1.75rem); font-weight: 500;
+    color: var(--accent); margin-top: 14px;
+  }
+  .hero .lede { max-width: 60ch; color: var(--muted); font-size: 1.08rem; margin-top: 22px; }
+  .hero .lede b { color: var(--fg); font-weight: 500; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--fg);
+    transition: border-color .15s, transform .15s;
+  }
+  .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+  /* Sections */
+  section { padding-top: 56px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  .sec-title { font-size: clamp(1.7rem, 4.2vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; margin-top: 10px; }
+  .sec-note { color: var(--muted); max-width: 58ch; margin-top: 10px; }
+
+  /* Bento */
+  .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+  .card {
+    position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 14px;
+    padding: 24px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface);
+    --mx: 50%; --my: 0%;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s;
+    background: radial-gradient(420px circle at var(--mx) var(--my), var(--glow), transparent 65%);
+  }
+  .card:hover::before { opacity: 1; }
+  .card > * { position: relative; }
+  .span-4 { grid-column: span 4; }
+  .span-3 { grid-column: span 3; }
+  .span-2 { grid-column: span 2; }
+  .span-6 { grid-column: span 6; }
+  .card h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+  .card p { color: var(--muted); font-size: 15.5px; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+  .tag { border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; }
+  .tag.live { color: var(--accent); border-color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 13.5px; padding: 5px 11px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); color: var(--fg); }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: auto; padding-top: 6px; }
+  .facts div { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+  .facts b { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--fg); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .link { margin-top: auto; font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; word-break: break-word; }
+  .link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .link.dim { color: var(--muted); font-weight: 500; }
+
+  /* Hero: copy on the left, interactive 3D map on the right */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 36px; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 6.2vw, 4.5rem); }
+  .stage-wrap { min-width: 0; }
+  .stage { position: relative; height: 430px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 40%, var(--glow), transparent 70%), var(--surface); }
+  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+  .lbl { position: absolute; left: 0; top: 0; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); pointer-events: none; white-space: nowrap; will-change: transform; }
+  .lbl.proj { font-size: 13px; font-weight: 500; color: var(--fg); }
+  .info { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(6px); font-size: 13.5px; color: var(--muted); }
+  .info b { display: block; color: var(--fg); font-family: var(--font-display); font-size: 15px; }
+  .picks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .picks button { font: inherit; font-size: 13.5px; font-weight: 500; cursor: pointer; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+  .picks button:hover, .picks button.on { border-color: var(--accent); color: var(--accent); }
+  .fallback { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+  .fallback[hidden] { display: none; }
+  @media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .stage { height: 330px; } }
+
+  /* Recorded runs inside a card */
+  .shots { border-top: 1px solid var(--line); padding-top: 14px; }
+  .shots summary { cursor: pointer; font-weight: 600; font-size: 15px; color: var(--accent); list-style: none; }
+  .shots summary::-webkit-details-marker { display: none; }
+  .shots summary::before { content: "+ "; font-family: var(--font-mono); }
+  .shots[open] summary::before { content: "\2212  "; }
+  .shots .grid { display: grid; gap: 12px; margin-top: 12px; }
+  .shots a { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .shots img { display: block; width: 100%; height: auto; }
+  .shots figcaption, .shots .cap { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+
+  /* Timeline */
+  .timeline { list-style: none; margin: 28px 0 0; padding: 0 0 0 26px; border-left: 1px solid var(--line); display: grid; gap: 34px; }
+  .timeline > li { position: relative; }
+  .timeline > li::before {
+    content: ""; position: absolute; left: -32px; top: 8px; width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .timeline .when { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+  .timeline h3 { font-size: 1.3rem; font-weight: 700; margin-top: 4px; }
+  .timeline .org { color: var(--accent); font-weight: 500; }
+  .timeline ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; max-width: 68ch; font-size: 15.5px; }
+  .timeline ul b { color: var(--fg); font-weight: 500; }
+
+  .timeline .t-note { color: var(--muted); font-size: 15.5px; margin-top: 6px; max-width: 62ch; }
+  .about { max-width: 62ch; color: var(--fg); font-size: 1.15rem; margin-top: 12px; }
+  .sub { font-size: 1.15rem; font-weight: 700; margin-top: 40px; color: var(--muted); }
+  .started { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+  .started .card { padding: 20px; gap: 10px; }
+  .started .card h3 { font-size: 1.15rem; }
+  .started .card p { font-size: 14.5px; }
+  .note { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 28px; }
+  .skills .card { padding: 20px; gap: 12px; }
+  .skills h3 { font-size: 1.02rem; font-family: var(--font-mono); font-weight: 500; color: var(--muted); letter-spacing: .02em; }
+
+  /* Contact */
+  .contact { margin-top: 28px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .contact .card { padding: 20px; gap: 8px; }
+  .contact .label { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+  .email-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .email { font-family: var(--font-mono); font-size: 14px; word-break: break-all; user-select: all; }
+  .copy { font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+  .copy:hover { border-color: var(--accent); }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+  @media (max-width: 820px) {
+    .span-6, .span-4, .span-3, .span-2 { grid-column: 1 / -1; }
+    .hero { padding-top: 104px; padding-bottom: 48px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head><body>
+
+<nav class="dock" aria-label="Sections">
+  <a href="#top" class="on">Home</a>
+  <a href="#work">Work</a>
+  <a href="#experience">Journey</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="wrap" id="top">
+  <header class="hero"><div class="hero-copy">
+    <div class="status"><i></i>Open to AI application, full-stack and forward-deployed roles</div>
+    <h1>Deepak Jain</h1>
+    <p class="role">AI application engineer and full-stack developer</p>
+    <p class="lede">I build assessment and hiring software, and AI-assisted workflows with tests behind them. At TalentXminds I am a <b>core developer on RankOTest</b>, a platform that runs public hiring drives in colleges. Based in Bengaluru, working remotely.</p>
+    <div class="actions">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="https://github.com/Deepakjain15" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+    <div class="stage-wrap">
+      <div class="stage" id="stage" role="group" aria-label="Interactive 3D map of my work. Drag to rotate, click a node for details.">
+        <canvas id="map"></canvas>
+        <div class="info" id="info"><b>Drag to rotate. Click a node.</b><span>Large nodes are projects. Lines show what each one uses.</span></div>
+      </div>
+      <div class="picks" id="picks"></div>
+      <ul class="fallback" id="fallback" hidden>
+        <li><b>RankOTest:</b> production assessment and hiring platform, 40+ releases.</li>
+        <li><b>AI Software Engineering Workflow:</b> TypeScript CLI that plans, implements, tests, reviews and fixes.</li>
+        <li><b>Personal Assistant Agent:</b> LangGraph prototype that files notes and tasks and answers questions.</li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="eyebrow">About</div>
+    <p class="about">I learn by building. I started with hand-coded sites, took on a live news website as a freelancer, then joined a real product team. Now I use AI tools and agents to move faster, and I check every change with tests. I like systems that are easy to understand and hard to break.</p>
+  </section>
+
+  <section id="work">
+    <div class="eyebrow">Selected work</div>
+    <h2 class="sec-title">What I have built</h2>
+    <p class="sec-note">One production platform, one open-source tool, and one prototype I am still growing.</p>
+
+    <div class="bento">
+      <article class="card spot span-4">
+        <div class="meta"><span class="tag live">Production</span><span>Jan 2026 to present</span><span>TypeScript · React · Node.js · MongoDB · Redis</span></div>
+        <h3>RankOTest</h3>
+        <p>A multi-portal assessment and hiring platform across 5 portals and 6 user roles. I work directly with the co-founder and own major parts of exams, coding assessments, grading and access control.</p>
+        <div class="chips">
+          <span class="chip">Proctoring</span>
+          <span class="chip">Isolated coding questions</span>
+          <span class="chip">Re-grade protection</span>
+          <span class="chip">College matching</span>
+          <span class="chip">Starter-code editor</span><span class="chip">Docker and AWS EC2 releases</span>
+        </div>
+        <div class="facts">
+          <div><b data-count="40" data-suffix="+">40+</b>releases shipped</div>
+          <div><b data-count="100" data-suffix="+">100+</b>jobs posted</div>
+          <div><b data-count="400" data-suffix="+">400+</b>trainers registered</div>
+        </div>
+        <a class="link" href="https://rankotest.com/" target="_blank" rel="noopener">rankotest.com</a>
+      </article>
+
+      <article class="card spot span-2">
+        <div class="meta"><span class="tag">Open source</span><span>2026</span></div>
+        <h3>AI Software Engineering Workflow</h3>
+        <p>A TypeScript CLI that takes a coding task through plan, implement, test, review and fix. It runs offline from recorded responses, so the whole flow and its CI need no API key. Tracks tokens and cost.</p>
+        <details class="shots">
+          <summary>See it run</summary>
+          <div class="grid">
+            <a href="images/cli-1-bug-and-plan.png" target="_blank" rel="noopener"><img src="images/cli-1-bug-and-plan.png" alt="Terminal: the demo test fails with 200 not equal to 190, then the CLI writes a plan to fix the cart discount bug" loading="lazy"></a>
+            <a href="images/cli-2-implement-test-review.png" target="_blank" rel="noopener"><img src="images/cli-2-implement-test-review.png" alt="Terminal: the CLI applies the fix, the test passes, and the review lists an edge case for discounts over 100 percent" loading="lazy"></a>
+          </div>
+          <p class="cap">Real output from the CLI in offline demo mode, which uses recorded responses and needs no API key. File paths shortened.</p>
+        </details>
+        <a class="link" href="https://github.com/Deepakjain15/ai-software-engineering-workflow" target="_blank" rel="noopener">github.com/Deepakjain15/ai-software-engineering-workflow</a>
+      </article>
+
+      <article class="card spot span-3">
+        <div class="meta"><span class="tag live">Live site</span><span>Dec 2024 to Jul 2025, and again in 2026</span></div>
+        <h3>Vidrohi Awaz</h3>
+        <p>A news website I develop end to end. In 2026 it got new features, faster pages, a redesigned interface and a rebuilt backend. I ship its releases to a live server on Docker and AWS EC2.</p>
+        <div class="chips"><span class="chip">New features</span><span class="chip">Performance</span><span class="chip">New interface</span><span class="chip">Rebuilt backend</span></div>
+        <a class="link" href="https://vidrohiawaz.com/" target="_blank" rel="noopener">vidrohiawaz.com</a>
+      </article>
+
+      <article class="card spot span-3">
+        <div class="meta"><span class="tag">Prototype</span><span>Python · LangGraph · Groq</span></div>
+        <h3>Personal Assistant Agent</h3>
+        <p>A LangGraph flow that sorts each message into a note, a task or a question, files it in the right place, and answers questions from stored notes. If no model is available it falls back to keyword rules.</p>
+        <span class="link dim">Code goes public after tests and a README</span>
+      </article>
+
+      <article class="card spot span-6">
+        <div class="meta"><span class="tag">Next</span><span>Planned</span></div>
+        <h3>A CLI that fixes its own failures</h3>
+        <p>Add a test-and-retry loop to the workflow CLI: run the tests, feed failures back to the model, and stop after a set number of tries. Then measure how often it succeeds on small demo bugs.</p>
+      </article>
+    </div>
+    <h3 class="sub">Where I started</h3>
+    <div class="started">
+      <article class="card spot"><div class="meta"><span class="tag">Hand-coded</span><span>2023</span></div><h3>FoodyGo</h3><p>My first full MERN app: React, Node and Express, MongoDB, JWT login, cart and orders.</p><a class="link" href="https://github.com/Deepakjain15/FoodyGo-mernapp" target="_blank" rel="noopener">Code on GitHub</a><span class="note">Not deployed</span></article>
+      <article class="card spot"><div class="meta"><span class="tag">Hand-coded</span><span>2026</span></div><h3>UTTUNGA Student Council</h3><p>A college site with a Bootstrap front end and a Google Form for registrations.</p><a class="link" href="https://github.com/Deepakjain15/UTTUNGA-Student-Council" target="_blank" rel="noopener">Code on GitHub</a><span class="note">Not deployed</span></article>
+      <article class="card spot"><div class="meta"><span class="tag">College project</span><span>2026</span></div><h3>Monsoon Atlas</h3><p>A 4-page responsive site with a live weather board and a trip budget planner.</p><a class="link" href="https://github.com/Deepakjain15/Monsoon-atlas" target="_blank" rel="noopener">Code on GitHub</a></article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="eyebrow">Journey</div>
+    <h2 class="sec-title">How I got here</h2>
+    <ol class="timeline">
+      <li><div class="when">2023</div><h3>First projects</h3><p class="t-note">Hand-coded a car listing page, then FoodyGo, a full MERN app. This is where I learned how login, carts and orders really work.</p></li>
+      <li><div class="when">Dec 2024 to Jul 2025, and again in 2026</div><h3>Full Stack Developer <span class="org">· Vidrohi Awaz</span></h3><p class="t-note">Freelance. Kept a live news website running, then came back in 2026 for new features, faster pages, a redesigned interface and a rebuilt backend.</p></li>
+      <li><div class="when">Jan 2026</div><h3>Intern <span class="org">· TalentXminds</span></h3><p class="t-note">Joined RankOTest and shipped features across the Admin, Vendor, Teacher and Student portals.</p></li>
+      <li><div class="when">May 2026</div><h3>BCA <span class="org">· Jain University</span></h3><p class="t-note">Graduated with a CGPA of 8.0 out of 10.</p></li>
+      <li><div class="when">Jun 2026 to now</div><h3>Full Stack Engineer <span class="org">· TalentXminds</span></h3><p class="t-note">Core developer on RankOTest. 40+ releases, plus the Litmus public hiring drive and the job portal. I ship releases to live servers on Docker and AWS EC2.</p></li>
+      <li><div class="when">2026 to now</div><h3>Building with AI</h3><p class="t-note">Built a workflow CLI that plans, tests and reviews code, then a LangGraph assistant. Next: agents that fix their own failures.</p></li>
+    </ol>
+    <p class="sec-note" style="margin-top:22px">Full role details are on <a href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">LinkedIn</a>.</p>
+  </section>
+
+  <section id="skills">
+    <div class="eyebrow">Skills</div>
+    <h2 class="sec-title">What I work with</h2>
+    <div class="skills">
+      <div class="card spot"><h3>Languages</h3><div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span></div></div>
+      <div class="card spot"><h3>Frontend</h3><div class="chips"><span class="chip">React</span><span class="chip">React Native</span><span class="chip">Tailwind CSS</span><span class="chip">HTML and CSS</span></div></div>
+      <div class="card spot"><h3>Backend and data</h3><div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">REST APIs</span><span class="chip">RBAC</span></div></div>
+      <div class="card spot"><h3>AI engineering</h3><div class="chips"><span class="chip">Claude Code</span><span class="chip">MCP tooling</span><span class="chip">LangGraph</span><span class="chip">Structured LLM workflows</span></div></div>
+      <div class="card spot"><h3>Testing and delivery</h3><div class="chips"><span class="chip">Playwright</span><span class="chip">Postman</span><span class="chip">Docker</span><span class="chip">AWS EC2</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span></div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="eyebrow">Contact</div>
+    <h2 class="sec-title">Let us talk</h2>
+    <p class="sec-note">Open to AI application, full-stack and forward-deployed engineering roles in Bengaluru or remote.</p>
+    <div class="contact">
+      <div class="card spot">
+        <span class="label">Email</span>
+        <div class="email-row">
+          <span class="email" id="email">jain.deepak150202@gmail.com</span>
+          <button class="copy" id="copy" type="button">Copy</button>
+        </div>
+      </div>
+      <div class="card spot">
+        <span class="label">LinkedIn</span>
+        <a class="link" style="margin-top:0" href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener">linkedin.com/in/deepak-jain</a>
+      </div>
+      <div class="card spot">
+        <span class="label">GitHub</span>
+        <a class="link" style="margin-top:0" href="https://github.com/Deepakjain15" target="_blank" rel="noopener">github.com/Deepakjain15</a>
+      </div>
+    </div>
+  </section>
+
+  <footer><span>Deepak Jain · Bengaluru</span><span>Built with HTML, CSS and Three.js</span></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // 3D map of projects and skills. Drag to rotate; click a node to bring it forward.
+  (function () {
+    var stage = document.getElementById("stage"), canvas = document.getElementById("map");
+    var info = document.getElementById("info"), picks = document.getElementById("picks");
+    var fallback = document.getElementById("fallback");
+    function useFallback() { fallback.hidden = false; stage.hidden = true; picks.hidden = true; }
+    if (typeof THREE === "undefined") { useFallback(); return; }
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); }
+    catch (e) { useFallback(); return; }
+
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var css = getComputedStyle(document.documentElement);
+    function col(n) { return css.getPropertyValue(n).trim() || "#888888"; }
+    var cAccent = col("--accent"), cFg = col("--fg"), cMuted = col("--muted");
+
+    var DATA = [
+      { id: "rank", label: "RankOTest", proj: 1, p: [-0.9, 0.35, 0.5], text: "Production assessment and hiring platform. 40+ releases across 5 portals and 6 user roles." },
+      { id: "flow", label: "AI Workflow CLI", proj: 1, p: [1.2, 0.7, -0.3], text: "TypeScript CLI: plan, implement, test, review, fix. Runs offline with recorded responses." },
+      { id: "asst", label: "Assistant Agent", proj: 1, p: [0.2, -1.1, 0.9], text: "Prototype that sorts messages into notes, tasks and questions, and answers from your notes." },
+      { id: "ts", label: "TypeScript", text: "Used in RankOTest and the workflow CLI." },
+      { id: "react", label: "React", text: "Builds the RankOTest portals." },
+      { id: "node", label: "Node.js", text: "RankOTest backend and APIs." },
+      { id: "mongo", label: "MongoDB", text: "RankOTest data layer." },
+      { id: "redis", label: "Redis", text: "Rate limiting and caching in RankOTest." },
+      { id: "aws", label: "Docker + EC2", text: "Release deploys for RankOTest and Vidrohi Awaz, which run live on Docker and AWS EC2." },
+      { id: "claude", label: "Claude Code", text: "Planning, review and impact analysis, with tests behind every AI change." },
+      { id: "lg", label: "LangGraph", text: "Routes messages in the assistant prototype." },
+      { id: "py", label: "Python", text: "Used for the assistant prototype." }
+    ];
+    var EDGES = [["rank","ts"],["rank","react"],["rank","node"],["rank","mongo"],["rank","redis"],["rank","aws"],["flow","ts"],["flow","claude"],["flow","asst"],["asst","py"],["asst","lg"],["asst","claude"]];
+
+    // Skills sit on a sphere; projects sit inside it.
+    var skills = DATA.filter(function (d) { return !d.proj; });
+    skills.forEach(function (d, i) {
+      var y = 1 - (i / (skills.length - 1)) * 2, r = Math.sqrt(1 - y * y), phi = i * 2.399963;
+      d.p = [Math.cos(phi) * r * 2.8, y * 2.0, Math.sin(phi) * r * 2.8];
+    });
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 50);
+    camera.position.z = 8.2;
+    var group = new THREE.Group();
+    scene.add(group);
+
+    var nodes = {}, meshes = [];
+    DATA.forEach(function (d) {
+      var mesh = new THREE.Mesh(new THREE.SphereGeometry(d.proj ? 0.27 : 0.13, 24, 24),
+        new THREE.MeshBasicMaterial({ color: d.proj ? cAccent : cMuted }));
+      mesh.position.set(d.p[0], d.p[1], d.p[2]);
+      mesh.userData.id = d.id;
+      group.add(mesh); meshes.push(mesh);
+      var lbl = document.createElement("span");
+      lbl.className = "lbl" + (d.proj ? " proj" : "");
+      lbl.textContent = d.label;
+      stage.appendChild(lbl);
+      nodes[d.id] = { d: d, mesh: mesh, lbl: lbl, s: 1 };
+    });
+
+    var pts = [];
+    EDGES.forEach(function (e) { pts.push.apply(pts, nodes[e[0]].d.p.concat(nodes[e[1]].d.p)); });
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
+    group.add(new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: cMuted, transparent: true, opacity: 0.35 })));
+
+    var sel = null, follow = false, ty = 0, tx = 0.12, tz = 8.2, dragging = false, moved = 0, lx = 0, ly = 0, raf = 0, running = false;
+    group.rotation.x = 0.12;
+
+    function setInfo(title, text) {
+      info.textContent = "";
+      var b = document.createElement("b"); b.textContent = title;
+      var s = document.createElement("span"); s.textContent = text;
+      info.appendChild(b); info.appendChild(s);
+    }
+    function paint() {
+      Object.keys(nodes).forEach(function (k) {
+        var n = nodes[k];
+        n.mesh.material.color.set(sel === k ? (n.d.proj ? cAccent : cFg) : (n.d.proj ? cAccent : cMuted));
+      });
+      Array.prototype.forEach.call(picks.querySelectorAll("button[data-id]"), function (b) {
+        b.classList.toggle("on", b.getAttribute("data-id") === sel);
+      });
+    }
+    function clear() {
+      sel = null; follow = false; tz = 8.2;
+      setInfo("Drag to rotate. Click a node.", "Large nodes are projects. Lines show what each one uses.");
+      paint();
+    }
+    function select(id) {
+      if (sel === id) { clear(); return; }
+      sel = id; follow = true;
+      var p = nodes[id].d.p;
+      ty = -Math.atan2(p[0], p[2]); tx = 0.12; tz = 6.3;
+      setInfo(nodes[id].d.label, nodes[id].d.text);
+      paint();
+    }
+
+    DATA.filter(function (d) { return d.proj; }).forEach(function (d) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = d.label; b.setAttribute("data-id", d.id);
+      b.addEventListener("click", function () { select(d.id); });
+      picks.appendChild(b);
+    });
+    var reset = document.createElement("button");
+    reset.type = "button"; reset.textContent = "Reset view";
+    reset.addEventListener("click", clear);
+    picks.appendChild(reset);
+
+    var ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), v = new THREE.Vector3();
+    function hit(e) {
+      var r = canvas.getBoundingClientRect();
+      ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      ray.setFromCamera(ndc, camera);
+      var h = ray.intersectObjects(meshes, false);
+      return h.length ? h[0].object.userData.id : null;
+    }
+    canvas.addEventListener("pointerdown", function (e) {
+      dragging = true; moved = 0; lx = e.clientX; ly = e.clientY;
+      canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing";
+    });
+    canvas.addEventListener("pointermove", function (e) {
+      if (!dragging) { canvas.style.cursor = hit(e) ? "pointer" : "grab"; return; }
+      var dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY;
+      moved += Math.abs(dx) + Math.abs(dy);
+      group.rotation.y += dx * 0.007;
+      group.rotation.x = Math.max(-0.8, Math.min(0.8, group.rotation.x + dy * 0.005));
+      follow = false;
+    });
+    canvas.addEventListener("pointerup", function (e) {
+      dragging = false; canvas.style.cursor = "grab";
+      if (moved < 6) { var id = hit(e); if (id) select(id); else if (sel) clear(); }
+    });
+
+    function resize() {
+      var w = stage.clientWidth, h = stage.clientHeight;
+      if (!w || !h) return;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    function place() {
+      var w = stage.clientWidth, h = stage.clientHeight;
+      group.updateMatrixWorld(true);
+      Object.keys(nodes).forEach(function (k) {
+        var n = nodes[k];
+        n.mesh.getWorldPosition(v);
+        var z = v.z;
+        v.project(camera);
+        var x = (v.x * 0.5 + 0.5) * w, y = (-v.y * 0.5 + 0.5) * h;
+        n.lbl.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(-50%," + ((n.d.proj ? 20 : 12) * n.s * (8.2 / camera.position.z)).toFixed(1) + "px)";
+        n.lbl.style.opacity = (sel === k ? 1 : Math.max(0.25, Math.min(1, 0.55 + z * 0.18))).toFixed(2);
+      });
+    }
+    function frame() {
+      raf = requestAnimationFrame(frame);
+      var k = reduce ? 1 : 0.09;
+      if (sel && follow) {
+        var d = ty - group.rotation.y; d = Math.atan2(Math.sin(d), Math.cos(d));
+        group.rotation.y += d * k; group.rotation.x += (tx - group.rotation.x) * k;
+      } else if (!sel && !dragging && !reduce) { group.rotation.y += 0.0022; }
+      camera.position.z += (tz - camera.position.z) * k;
+      Object.keys(nodes).forEach(function (id) {
+        var n = nodes[id], target = sel === id ? 1.6 : 1;
+        n.s += (target - n.s) * k; n.mesh.scale.setScalar(n.s);
+      });
+      place(); renderer.render(scene, camera);
+    }
+    resize();
+    if ("ResizeObserver" in window) new ResizeObserver(resize).observe(stage);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        var on = es[0].isIntersecting;
+        if (on && !running) { running = true; frame(); }
+        if (!on && running) { running = false; cancelAnimationFrame(raf); }
+      }).observe(stage);
+    } else { running = true; frame(); }
+  })();
+</script>
+<script>
+  // Spotlight follows the pointer on every card.
+  document.querySelectorAll(".spot").forEach(function (el) {
+    el.classList.add("card");
+    el.addEventListener("pointermove", function (e) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      el.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
+
+  // Copy the email address, with a selectable fallback.
+  var copyBtn = document.getElementById("copy");
+  var emailEl = document.getElementById("email");
+  copyBtn.addEventListener("click", function () {
+    function done(ok) {
+      copyBtn.textContent = ok ? "Copied" : "Press Ctrl+C";
+      setTimeout(function () { copyBtn.textContent = "Copy"; }, 1800);
+    }
+    function select() {
+      var range = document.createRange();
+      range.selectNodeContents(emailEl);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      done(false);
+    }
+    try {
+      navigator.clipboard.writeText(emailEl.textContent.trim()).then(function () { done(true); }, select);
+    } catch (err) { select(); }
+  });
+
+  // Count-up numbers. The final value is already in the HTML, so the page reads
+  // correctly without script, with reduced motion, or before the card scrolls into view.
+  (function () {
+    var nums = document.querySelectorAll("[data-count]");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!nums.length || reduce || !("IntersectionObserver" in window)) return;
+    function run(el) {
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      var suffix = el.getAttribute("data-suffix") || "";
+      var start = null, dur = 1300;
+      function tick(t) {
+        if (start === null) start = t;
+        var p = Math.min((t - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { run(en.target); seen.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { seen.observe(el); });
+  })();
+
+  // Highlight the dock link for the section in view.
+  var links = Array.prototype.slice.call(document.querySelectorAll(".dock a"));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && map[en.target.id]) {
+          links.forEach(function (a) { a.classList.remove("on"); });
+          map[en.target.id].classList.add("on");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(map).forEach(function (id) {
+      var t = document.getElementById(id);
+      if (t) io.observe(t);
+    });
+  }
+</script>
+
+</body></html>
