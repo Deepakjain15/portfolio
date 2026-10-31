@@ -239,3 +239,16 @@ footer.band { padding-block: 0 28px; }
   * { transition: none !important; }
   .marquee-track { animation: none; }
 }
+
+/* AI automation cards */
+.agents { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; }
+.agent { display: flex; flex-direction: column; gap: 12px; padding: 22px; border: 1px solid var(--line); border-top: 2px solid var(--ink); border-radius: 4px; transition: border-color .2s, transform .2s; }
+.agent:hover { border-color: var(--accent); transform: translateY(-3px); }
+.agent h3 { font-family: var(--display); font-weight: 700; font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.2; }
+.agent p { color: var(--muted); }
+.agent-link { font-family: var(--mono); font-size: 13px; color: var(--accent); text-decoration: none; align-self: flex-start; }
+.agent-link:hover { text-decoration: underline; }
+@media (min-width: 1000px) { .agent:nth-child(5) { grid-column: span 2; } }
+.tags { margin: auto 0 0; padding: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+.tags li { font-family: var(--mono); font-size: 11.5px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .agent { transition: none; } .agent:hover { transform: none; } }
