@@ -151,8 +151,7 @@
   .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
   .lbl { position: absolute; left: 0; top: 0; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); pointer-events: none; white-space: nowrap; will-change: transform; }
   .lbl.proj { font-size: 13px; font-weight: 500; color: var(--fg); }
-  .info { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
-    background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(6px); font-size: 13.5px; color: var(--muted); }
+  .info { margin-top: 10px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); font-size: 13.5px; color: var(--muted); min-height: 3.6em; }
   .info b { display: block; color: var(--fg); font-family: var(--font-display); font-size: 15px; }
   .picks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .picks button { font: inherit; font-size: 13.5px; font-weight: 500; cursor: pointer; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
@@ -161,6 +160,9 @@
   .fallback[hidden] { display: none; }
   @media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .stage { height: 330px; } }
 
+  .thumb { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .thumb img { display: block; width: 100%; height: auto; }
+  .started .thumb { margin-bottom: 2px; }
   /* Recorded runs inside a card */
   .shots { border-top: 1px solid var(--line); padding-top: 14px; }
   .shots summary { cursor: pointer; font-weight: 600; font-size: 15px; color: var(--accent); list-style: none; }
@@ -188,13 +190,19 @@
   .timeline .t-note { color: var(--muted); font-size: 15.5px; margin-top: 6px; max-width: 62ch; }
   .about { max-width: 62ch; color: var(--fg); font-size: 1.15rem; margin-top: 12px; }
   .sub { font-size: 1.15rem; font-weight: 700; margin-top: 40px; color: var(--muted); }
-  .started { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+  .started { align-items: start; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
   .started .card { padding: 20px; gap: 10px; }
   .started .card h3 { font-size: 1.15rem; }
   .started .card p { font-size: 14.5px; }
   .note { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+  .cards { display: grid; gap: 14px; margin-top: 14px; }
+  .cards2 { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .cards3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cards .card h3 { font-size: 1.3rem; }
+  @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) { .cards2 { grid-template-columns: 1fr; } }
   /* Skills */
-  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 28px; }
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 28px; }
   .skills .card { padding: 20px; gap: 12px; }
   .skills h3 { font-size: 1.02rem; font-family: var(--font-mono); font-weight: 500; color: var(--muted); letter-spacing: .02em; }
 
@@ -222,7 +230,7 @@
 <nav class="dock" aria-label="Sections">
   <a href="#top" class="on">Home</a>
   <a href="#work">Work</a>
-  <a href="#experience">Journey</a>
+  <a href="#experience">About</a>
   <a href="#skills">Skills</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -235,6 +243,7 @@
     <p class="lede">I build assessment and hiring software, and AI-assisted workflows with tests behind them. At TalentXminds I am a <b>core developer on RankOTest</b>, a platform that runs public hiring drives in colleges. Based in Bengaluru, working remotely.</p>
     <div class="actions">
       <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="mailto:jain.deepak150202@gmail.com">Email me</a>
       <a class="btn" href="https://github.com/Deepakjain15" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener">LinkedIn</a>
     </div>
@@ -242,8 +251,9 @@
     <div class="stage-wrap">
       <div class="stage" id="stage" role="group" aria-label="Interactive 3D map of my work. Drag to rotate, click a node for details.">
         <canvas id="map"></canvas>
-        <div class="info" id="info"><b>Drag to rotate. Click a node.</b><span>Large nodes are projects. Lines show what each one uses.</span></div>
+
       </div>
+      <div class="info" id="info"><b>Drag to rotate. Click a node.</b><span>Large nodes are projects. Lines show what each one uses.</span></div>
       <div class="picks" id="picks"></div>
       <ul class="fallback" id="fallback" hidden>
         <li><b>RankOTest:</b> production assessment and hiring platform, 40+ releases.</li>
@@ -253,90 +263,96 @@
     </div>
   </header>
 
-  <section id="about">
-    <div class="eyebrow">About</div>
-    <p class="about">I learn by building. I started with hand-coded sites, took on a live news website as a freelancer, then joined a real product team. Now I use AI tools and agents to move faster, and I check every change with tests. I like systems that are easy to understand and hard to break.</p>
-  </section>
-
   <section id="work">
     <div class="eyebrow">Selected work</div>
     <h2 class="sec-title">What I have built</h2>
-    <p class="sec-note">One production platform, one open-source tool, and one prototype I am still growing.</p>
+    <p class="sec-note">Two live products, three AI and testing projects, and where I started.</p>
 
-    <div class="bento">
-      <article class="card spot span-4">
+    <h3 class="sub">Production</h3>
+    <div class="cards cards2">
+      <article class="card spot">
         <div class="meta"><span class="tag live">Production</span><span>Jan 2026 to present</span><span>TypeScript · React · Node.js · MongoDB · Redis</span></div>
+        <a class="thumb" href="https://rankotest.com/" target="_blank" rel="noopener"><img src="images/rankotest-landing.png" alt="RankOTest landing page: Run exams, train talent, one platform" loading="lazy"></a>
         <h3>RankOTest</h3>
         <p>A multi-portal assessment and hiring platform across 5 portals and 6 user roles. I work directly with the co-founder and own major parts of exams, coding assessments, grading and access control.</p>
-        <div class="chips">
-          <span class="chip">Proctoring</span>
-          <span class="chip">Isolated coding questions</span>
-          <span class="chip">Re-grade protection</span>
-          <span class="chip">College matching</span>
-          <span class="chip">Starter-code editor</span><span class="chip">Docker and AWS EC2 releases</span>
-        </div>
-        <div class="facts">
-          <div><b data-count="40" data-suffix="+">40+</b>releases shipped</div>
-          <div><b data-count="100" data-suffix="+">100+</b>jobs posted</div>
-          <div><b data-count="400" data-suffix="+">400+</b>trainers registered</div>
-        </div>
+        <div class="chips"><span class="chip">Proctoring</span><span class="chip">Isolated coding questions</span><span class="chip">Re-grade protection</span><span class="chip">College matching</span><span class="chip">Starter-code editor</span><span class="chip">Docker and AWS EC2 releases</span></div>
+        <div class="facts"><div><b data-count="40" data-suffix="+">40+</b>releases shipped</div><div><b data-count="100" data-suffix="+">100+</b>jobs posted</div><div><b data-count="400" data-suffix="+">400+</b>trainers registered</div></div>
         <a class="link" href="https://rankotest.com/" target="_blank" rel="noopener">rankotest.com</a>
       </article>
+      <article class="card spot">
+        <div class="meta"><span class="tag live">Live site</span><span>Dec 2024 to Jul 2025, and again in 2026</span></div>
+        <a class="thumb" href="https://vidrohiawaz.com/" target="_blank" rel="noopener"><img src="images/va-header.png" alt="Vidrohi Awaz news website header and navigation" loading="lazy"></a>
+        <h3>Vidrohi Awaz</h3>
+        <p>A news website I develop end to end. In 2026 it got new features, faster pages, a redesigned interface and a rebuilt backend. I ship its releases to a live server on Docker and AWS EC2.</p>
+        <div class="chips"><span class="chip">New features</span><span class="chip">Performance</span><span class="chip">New interface</span><span class="chip">Rebuilt backend</span></div>
+        <a class="link" href="https://vidrohiawaz.com/" target="_blank" rel="noopener">vidrohiawaz.com</a>
+      </article>
+    </div>
 
-      <article class="card spot span-2">
-        <div class="meta"><span class="tag">Open source</span><span>2026</span></div>
+    <h3 class="sub">AI and tools</h3>
+    <div class="cards cards3">
+      <article class="card spot">
+        <div class="meta"><span class="tag">Open source</span><span>2026</span><span>TypeScript</span></div>
         <h3>AI Software Engineering Workflow</h3>
-        <p>A TypeScript CLI that takes a coding task through plan, implement, test, review and fix. It runs offline from recorded responses, so the whole flow and its CI need no API key. Tracks tokens and cost.</p>
+        <p>A CLI that takes a coding task through plan, implement, test, review and fix. It runs offline from recorded responses, so the whole flow and its CI need no API key. Tracks tokens and cost.</p>
         <details class="shots">
           <summary>See it run</summary>
           <div class="grid">
             <a href="images/cli-1-bug-and-plan.png" target="_blank" rel="noopener"><img src="images/cli-1-bug-and-plan.png" alt="Terminal: the demo test fails with 200 not equal to 190, then the CLI writes a plan to fix the cart discount bug" loading="lazy"></a>
             <a href="images/cli-2-implement-test-review.png" target="_blank" rel="noopener"><img src="images/cli-2-implement-test-review.png" alt="Terminal: the CLI applies the fix, the test passes, and the review lists an edge case for discounts over 100 percent" loading="lazy"></a>
           </div>
-          <p class="cap">Real output from the CLI in offline demo mode, which uses recorded responses and needs no API key. File paths shortened.</p>
+          <p class="cap">Real output in offline demo mode, which uses recorded responses and needs no API key. File paths shortened.</p>
         </details>
-        <a class="link" href="https://github.com/Deepakjain15/ai-software-engineering-workflow" target="_blank" rel="noopener">github.com/Deepakjain15/ai-software-engineering-workflow</a>
+        <a class="link" href="https://github.com/Deepakjain15/ai-software-engineering-workflow" target="_blank" rel="noopener">View on GitHub</a>
       </article>
-
-      <article class="card spot span-3">
-        <div class="meta"><span class="tag live">Live site</span><span>Dec 2024 to Jul 2025, and again in 2026</span></div>
-        <h3>Vidrohi Awaz</h3>
-        <p>A news website I develop end to end. In 2026 it got new features, faster pages, a redesigned interface and a rebuilt backend. I ship its releases to a live server on Docker and AWS EC2.</p>
-        <div class="chips"><span class="chip">New features</span><span class="chip">Performance</span><span class="chip">New interface</span><span class="chip">Rebuilt backend</span></div>
-        <a class="link" href="https://vidrohiawaz.com/" target="_blank" rel="noopener">vidrohiawaz.com</a>
+      <article class="card spot">
+        <div class="meta"><span class="tag">Demo only</span><span>2026</span><span>Playwright · axe · lychee</span></div>
+        <h3>site-check</h3>
+        <p>One command that checks a website like a real user: real Chrome at phone, tablet and laptop sizes, accessibility, and every link. Repeat runs use no AI and no tokens. On a copy with five planted bugs it caught all five.</p>
+        <details class="shots">
+          <summary>See it run</summary>
+          <div class="grid">
+            <a href="images/site-check-live.png" target="_blank" rel="noopener"><img src="images/site-check-live.png" alt="Terminal: site-check on the live portfolio. All checks pass at phone, tablet and desktop sizes, 19 links OK, 0 AI calls" loading="lazy"></a>
+            <a href="images/site-check-bugs.png" target="_blank" rel="noopener"><img src="images/site-check-bugs.png" alt="Terminal: site-check on a copy with planted bugs. It reports sideways scroll, console errors, accessibility problems and two broken links" loading="lazy"></a>
+          </div>
+          <p class="cap">Real output from my own tool. The code is not published; this is a demonstration of it.</p>
+        </details>
+        <span class="link dim">Demonstration only, code not published</span>
       </article>
-
-      <article class="card spot span-3">
-        <div class="meta"><span class="tag">Prototype</span><span>Python · LangGraph · Groq</span></div>
+      <article class="card spot">
+        <div class="meta"><span class="tag">Prototype</span><span>2026</span><span>Python · LangGraph · Groq</span></div>
         <h3>Personal Assistant Agent</h3>
         <p>A LangGraph flow that sorts each message into a note, a task or a question, files it in the right place, and answers questions from stored notes. If no model is available it falls back to keyword rules.</p>
-        <span class="link dim">Code goes public after tests and a README</span>
-      </article>
-
-      <article class="card spot span-6">
-        <div class="meta"><span class="tag">Next</span><span>Planned</span></div>
-        <h3>A CLI that fixes its own failures</h3>
-        <p>Add a test-and-retry loop to the workflow CLI: run the tests, feed failures back to the model, and stop after a set number of tries. Then measure how often it succeeds on small demo bugs.</p>
+        <details class="shots">
+          <summary>See it run</summary>
+          <div class="grid">
+            <a href="images/assistant-run.png" target="_blank" rel="noopener"><img src="images/assistant-run.png" alt="Terminal: the assistant sorts five messages into notes, tasks and questions and answers from the notes" loading="lazy"></a>
+          </div>
+          <p class="cap">Real output, using made-up demo notes. The code is not published.</p>
+        </details>
+        <span class="link dim">Prototype, not published</span>
       </article>
     </div>
+
     <h3 class="sub">Where I started</h3>
     <div class="started">
       <article class="card spot"><div class="meta"><span class="tag">Hand-coded</span><span>2023</span></div><h3>FoodyGo</h3><p>My first full MERN app: React, Node and Express, MongoDB, JWT login, cart and orders.</p><a class="link" href="https://github.com/Deepakjain15/FoodyGo-mernapp" target="_blank" rel="noopener">Code on GitHub</a><span class="note">Not deployed</span></article>
-      <article class="card spot"><div class="meta"><span class="tag">Hand-coded</span><span>2026</span></div><h3>UTTUNGA Student Council</h3><p>A college site with a Bootstrap front end and a Google Form for registrations.</p><a class="link" href="https://github.com/Deepakjain15/UTTUNGA-Student-Council" target="_blank" rel="noopener">Code on GitHub</a><span class="note">Not deployed</span></article>
-      <article class="card spot"><div class="meta"><span class="tag">College project</span><span>2026</span></div><h3>Monsoon Atlas</h3><p>A 4-page responsive site with a live weather board and a trip budget planner.</p><a class="link" href="https://github.com/Deepakjain15/Monsoon-atlas" target="_blank" rel="noopener">Code on GitHub</a></article>
+      <article class="card spot"><div class="meta"><span class="tag">Hand-coded</span><span>2026</span></div><a class="thumb" href="https://github.com/Deepakjain15/UTTUNGA-Student-Council" target="_blank" rel="noopener"><img src="images/uttunga.png" alt="UTTUNGA student council home page" loading="lazy"></a><h3>UTTUNGA Student Council</h3><p>A college site with a Bootstrap front end and a Google Form for registrations.</p><a class="link" href="https://github.com/Deepakjain15/UTTUNGA-Student-Council" target="_blank" rel="noopener">Code on GitHub</a><span class="note">Not deployed</span></article>
+      <article class="card spot"><div class="meta"><span class="tag">College project</span><span>2026</span></div><a class="thumb" href="https://github.com/Deepakjain15/Monsoon-atlas" target="_blank" rel="noopener"><img src="images/monsoon-atlas.png" alt="Monsoon Atlas home page: Routes that feel handpicked, not mass produced" loading="lazy"></a><h3>Monsoon Atlas</h3><p>A 4-page responsive site with a live weather board and a trip budget planner.</p><a class="link" href="https://github.com/Deepakjain15/Monsoon-atlas" target="_blank" rel="noopener">Code on GitHub</a></article>
     </div>
   </section>
 
   <section id="experience">
-    <div class="eyebrow">Journey</div>
+    <div class="eyebrow">About and journey</div>
     <h2 class="sec-title">How I got here</h2>
+    <p class="about">I learn by building. I started with hand-coded sites, took on a live news website as a freelancer, then joined a real product team. Now I use AI tools and agents to move faster, and I check every change with tests. I like systems that are easy to understand and hard to break.</p>
     <ol class="timeline">
-      <li><div class="when">2023</div><h3>First projects</h3><p class="t-note">Hand-coded a car listing page, then FoodyGo, a full MERN app. This is where I learned how login, carts and orders really work.</p></li>
-      <li><div class="when">Dec 2024 to Jul 2025, and again in 2026</div><h3>Full Stack Developer <span class="org">· Vidrohi Awaz</span></h3><p class="t-note">Freelance. Kept a live news website running, then came back in 2026 for new features, faster pages, a redesigned interface and a rebuilt backend.</p></li>
-      <li><div class="when">Jan 2026</div><h3>Intern <span class="org">· TalentXminds</span></h3><p class="t-note">Joined RankOTest and shipped features across the Admin, Vendor, Teacher and Student portals.</p></li>
+      <li><div class="when">2023</div><h3>First projects</h3><p class="t-note">A car listing page, then FoodyGo, my first full MERN app.</p></li>
+      <li><div class="when">Dec 2024 to Jul 2025, and again in 2026</div><h3>Full Stack Developer <span class="org">· Vidrohi Awaz</span></h3><p class="t-note">Freelance. Started on a live news site, then came back in 2026 for the big upgrade.</p></li>
+      <li><div class="when">Jan 2026</div><h3>Intern <span class="org">· TalentXminds</span></h3><p class="t-note">Joined RankOTest and shipped features across four portals.</p></li>
       <li><div class="when">May 2026</div><h3>BCA <span class="org">· Jain University</span></h3><p class="t-note">Graduated with a CGPA of 8.0 out of 10.</p></li>
-      <li><div class="when">Jun 2026 to now</div><h3>Full Stack Engineer <span class="org">· TalentXminds</span></h3><p class="t-note">Core developer on RankOTest. 40+ releases, plus the Litmus public hiring drive and the job portal. I ship releases to live servers on Docker and AWS EC2.</p></li>
-      <li><div class="when">2026 to now</div><h3>Building with AI</h3><p class="t-note">Built a workflow CLI that plans, tests and reviews code, then a LangGraph assistant. Next: agents that fix their own failures.</p></li>
+      <li><div class="when">Jun 2026 to now</div><h3>Full Stack Engineer <span class="org">· TalentXminds</span></h3><p class="t-note">Core developer on RankOTest, with 40+ releases.</p></li>
+      <li><div class="when">2026 to now</div><h3>Building with AI</h3><p class="t-note">A workflow CLI, then site-check, then a LangGraph assistant. Next: agents that fix their own failures.</p></li>
     </ol>
     <p class="sec-note" style="margin-top:22px">Full role details are on <a href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">LinkedIn</a>.</p>
   </section>
