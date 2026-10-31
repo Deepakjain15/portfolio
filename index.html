@@ -1,248 +1,21 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Deepak Jain, AI application engineer and full-stack developer in Bengaluru. RankOTest, Vidrohi Awaz, and AI workflow projects."><meta property="og:title" content="Deepak Jain | AI Application Engineer"><meta property="og:description" content="Full-stack and AI application engineer. Projects, journey and contact."><meta property="og:type" content="website"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d0f14'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%238b99ff'%3EDJ%3C/text%3E%3C/svg%3E"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Deepak Jain | AI Application Engineer</title>
-
+<meta name="description" content="Deepak Jain, AI application engineer and full-stack developer in Bengaluru. RankOTest, Vidrohi Awaz, and AI workflow projects.">
+<meta property="og:title" content="Deepak Jain | AI Application Engineer">
+<meta property="og:description" content="Full-stack and AI application engineer. Projects, journey and contact.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d0f14'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%238b99ff'%3EDJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-<style>
-  /* Concept: the site is Deepak's loop (plan, build, test, fix, repeat) and it gets cheaper every time it runs.
-     Layout: fixed nav, split hero with the loop ring, a pinned scroll-driven loop, a live self-check, run-log work list, git-log journey.
-     Palette: engineering paper + ink + one cobalt signal; green/red only mean pass/fail. */
-  :root {
-    --paper: #ecebe5;
-    --paper-2: #e1e0d8;
-    --ink: #111318;
-    --muted: #565b66;
-    --line: #c7c6bd;
-    --accent: #2f45ff;
-    --accent-ink: #ffffff;
-    --pass: #0f7a55;
-    --fail: #c23a2a;
-    --code-bg: #14161c;
-    --code-fg: #e6e4dc;
-    --code-dim: #8b909c;
-    --code-pass: #5fd6a4;
-    --code-fail: #ff8a78;
-    --code-accent: #9aa8ff;
-    --fg: var(--ink);
-    --bg: var(--paper);
-    --surface: var(--paper-2);
-    --glow: color-mix(in srgb, var(--accent) 16%, transparent);
-    --display: "Syne", "Segoe UI", system-ui, sans-serif;
-    --body: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0d0f14; --paper-2: #151821; --ink: #ecebe4; --muted: #9aa0ad; --line: #272b35;
-      --accent: #8b99ff; --accent-ink: #0d0f14; --pass: #4fd1a1; --fail: #ff7a68;
-      --code-bg: #07080c; color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0d0f14; --paper-2: #151821; --ink: #ecebe4; --muted: #9aa0ad; --line: #272b35;
-    --accent: #8b99ff; --accent-ink: #0d0f14; --pass: #4fd1a1; --fail: #ff7a68;
-    --code-bg: #07080c; color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  html { overflow-x: auto; scroll-padding-top: 84px; }
-  html.lenis, html.lenis body { height: auto; }
-  .lenis.lenis-smooth { scroll-behavior: auto !important; }
-  body {
-    background: var(--paper); color: var(--ink);
-    font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    padding-block: 0 40px; overflow-x: clip;
-  }
-  a { color: inherit; }
-  p { margin: 0; }
-  h1, h2, h3 { margin: 0; font-family: var(--display); text-wrap: balance; }
-  .wrap { max-width: 1240px; margin-inline: auto; }
-  .mono { font-family: var(--mono); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-
-  /* Nav */
-  .nav {
-    position: fixed; z-index: 50; top: 0; left: 0; right: 0;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-    background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-in { max-width: 1240px; margin: auto; height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .brand { font-family: var(--display); font-weight: 700; letter-spacing: -.02em; text-decoration: none; }
-  .nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
-  .nav .l { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 8px 10px; }
-  .nav .l:hover { color: var(--ink); }
-  .runpill { font-family: var(--mono); font-size: 12px; border: 1px solid var(--line); padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
-  .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }
-  @media (max-width: 760px) { .nav ul { display: none; } }
-
-  /* Buttons */
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
-    font-family: var(--mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
-    padding: 13px 18px; border: 2px solid var(--ink); border-radius: 4px; background: transparent; color: var(--ink);
-    transition: background .2s, color .2s, border-color .2s;
-  }
-  .btn:hover { background: var(--ink); color: var(--paper); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  .btn.primary:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-
-  /* Hero */
-  .hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: center; padding-top: 132px; padding-bottom: 80px; }
-  .kicker { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 26px; }
-  .display { font-weight: 800; font-size: clamp(3rem, 7.6vw, 6.6rem); line-height: .94; letter-spacing: -.045em; }
-  .display .line { display: block; overflow: hidden; padding-bottom: .1em; padding-right: .06em; }
-  .display .w { display: inline-block; will-change: transform; }
-  .display .accent { color: var(--accent); }
-  .lede { max-width: 54ch; margin-top: 28px; font-size: 1.2rem; color: var(--muted); }
-  .lede b { color: var(--ink); font-weight: 600; }
-  .proof { margin-top: 34px; font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  .proof span::before { content: "+ "; color: var(--accent); }
-  .ring-hero { margin: 0; }
-  .ring-hero figcaption { margin-top: 12px; font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.5; }
-  svg.ring { width: 100%; height: auto; display: block; overflow: visible; }
-  .track { fill: none; stroke: var(--line); stroke-width: 2; }
-  .trace { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
-  .node { fill: var(--paper); stroke: var(--ink); stroke-width: 2; transition: fill .3s, r .3s; }
-  .node.is-active { fill: var(--accent); stroke: var(--accent); }
-  .nlabel { font-family: var(--mono); font-size: 13px; fill: var(--muted); letter-spacing: .06em; text-transform: uppercase; transition: fill .3s; }
-  .nlabel.is-active { fill: var(--ink); font-weight: 500; }
-  .ctr-small { font-family: var(--mono); font-size: 13px; fill: var(--muted); letter-spacing: .14em; }
-  .ctr-big { font-family: var(--display); font-weight: 800; font-size: 54px; fill: var(--ink); letter-spacing: -.03em; }
-  .orbit { transform-origin: 200px 200px; }
-  @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 108px; gap: 36px; } .ring-hero { max-width: 420px; } }
-
-  /* Sections */
-  section { padding-block: 96px 0; }
-  .sec-title { font-weight: 800; font-size: clamp(2rem, 5.2vw, 3.8rem); letter-spacing: -.035em; line-height: 1; margin-top: 12px; }
-  .sec-note { max-width: 58ch; margin-top: 16px; color: var(--muted); }
-
-  /* Loop (pinned on wide screens, stacked everywhere else) */
-  .loop-head { padding-bottom: 36px; }
-  .loop-stage { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: center; min-height: 100vh; }
-  .loop-ring { max-width: 460px; width: 100%; margin-inline: auto; }
-  .panels { display: grid; grid-template-areas: "stack"; }
-  .panel { grid-area: stack; opacity: 0; transform: translateY(24px); pointer-events: none; transition: opacity .45s ease, transform .45s ease; align-self: center; }
-  .panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
-  .loop.static .loop-stage { min-height: 0; padding-bottom: 0; }
-  .loop.static .panels { display: block; }
-  .loop.static .panel { opacity: 1; transform: none; pointer-events: auto; margin-top: 48px; }
-  .loop.static .loop-ring { max-width: 340px; }
-  .panel h3 { font-weight: 800; font-size: clamp(2.4rem, 6vw, 4.6rem); letter-spacing: -.04em; line-height: .95; }
-  .panel .say { margin-top: 16px; max-width: 50ch; color: var(--muted); }
-  .panel .say b { color: var(--ink); font-weight: 600; }
-  .term { margin-top: 22px; background: var(--code-bg); color: var(--code-fg); border-radius: 6px; padding: 16px 18px; font-family: var(--mono); font-size: 12.5px; line-height: 1.65; overflow-x: auto; white-space: pre; }
-  .term .c { color: var(--code-accent); }
-  .term .d { color: var(--code-dim); }
-  .term .p { color: var(--code-pass); }
-  .term .f { color: var(--code-fail); }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .chip { font-family: var(--mono); font-size: 12px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 3px; }
-  .facts { display: flex; flex-wrap: wrap; gap: 6px 34px; margin-top: 22px; }
-  .facts div { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .facts b { display: block; font-family: var(--display); font-size: 2.2rem; font-weight: 800; color: var(--ink); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-  .replay { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 22px; }
-  .mini { width: 120px; flex: none; }
-  .replay .btns { display: flex; flex-wrap: wrap; gap: 8px; }
-  .replay .btn { padding: 9px 12px; font-size: 12px; }
-  .replay-note { margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
-
-  /* Original hero: name, role and the 3D map */
-  .role { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2.6vw, 1.8rem); letter-spacing: -.02em; color: var(--accent); margin-top: 18px; }
-  .hero-facts { margin-top: 30px; }
-  .stage-wrap { min-width: 0; }
-  .stage { position: relative; height: 430px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--paper-2); }
-  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
-  .lbl { position: absolute; left: 0; top: 0; font-family: var(--mono); font-size: 11.5px; color: var(--muted); pointer-events: none; white-space: nowrap; will-change: transform; }
-  .lbl.proj { font-size: 13px; font-weight: 500; color: var(--ink); }
-  .info { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 4px; font-size: .92rem; color: var(--muted); min-height: 3.6em; }
-  .info b { display: block; color: var(--ink); font-family: var(--display); font-size: 1rem; }
-  .picks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-  .picks button { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; cursor: pointer; padding: 7px 12px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--ink); }
-  .picks button:hover, .picks button.on { border-color: var(--accent); color: var(--accent); }
-  .fallback { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
-  .fallback[hidden] { display: none; }
-  .grp { margin-top: 44px; }
-  @media (max-width: 900px) { .stage { height: 330px; } }
-
-  /* Checks */
-  .checks { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: start; }
-  .check-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .check-list li { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .check-list .ico { font-family: var(--mono); color: var(--muted); }
-  .check-list .name { font-weight: 500; }
-  .check-list .note { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: right; }
-  .check-list li.pass .ico { color: var(--pass); }
-  .check-list li.fail .ico { color: var(--fail); }
-  .summary { margin-top: 20px; font-family: var(--mono); font-size: 13px; min-height: 1.6em; }
-  @media (max-width: 900px) { .loop-stage, .checks { grid-template-columns: 1fr; gap: 28px; } }
-
-  /* Run log (work) */
-  .runs { margin-top: 36px; border-top: 2px solid var(--ink); }
-  details.run { border-bottom: 1px solid var(--line); }
-  details.run summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 110px minmax(0, 1.4fr) minmax(0, 2fr) 24px; gap: 18px; align-items: baseline; padding: 22px 0; }
-  details.run summary::-webkit-details-marker { display: none; }
-  .stat { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--line); border-radius: 3px; justify-self: start; color: var(--muted); }
-  .stat.live { color: var(--pass); border-color: var(--pass); }
-  .stat.public { color: var(--accent); border-color: var(--accent); }
-  .rname { font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -.02em; line-height: 1.15; }
-  .rmeta { color: var(--muted); }
-  .chev { font-family: var(--mono); color: var(--muted); transition: transform .25s; justify-self: end; }
-  details.run[open] .chev { transform: rotate(45deg); }
-  details.run:hover .rname { color: var(--accent); }
-  .run-body { display: grid; grid-template-columns: 110px minmax(0, 1.4fr) minmax(0, 2fr); gap: 18px; padding: 0 0 28px; }
-  .run-body .txt { grid-column: 2 / span 2; display: grid; gap: 14px; max-width: 70ch; }
-  .run-body .txt p { color: var(--muted); }
-  .run-body .links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 13px; }
-  .run-body .links a { color: var(--accent); }
-  .shots { grid-column: 2 / span 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 420px)); gap: 12px; }
-  .shots img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 6px; }
-  .early-title { margin-top: 44px; }
-  details.run.quiet .rname { font-size: 1.15rem; }
-  details.run.quiet summary { padding: 16px 0; }
-  @media (max-width: 760px) {
-    details.run summary { grid-template-columns: minmax(0, 1fr) 24px; row-gap: 6px; }
-    details.run summary .stat { grid-column: 1; }
-    details.run summary .chev { grid-column: 2; grid-row: 1; }
-    details.run summary .rname, details.run summary .rmeta { grid-column: 1 / -1; }
-    .run-body, .run-body .txt, .shots { grid-template-columns: 1fr; grid-column: 1 / -1; }
-  }
-
-  /* Journey as a log */
-  .log { list-style: none; margin: 36px 0 0; padding: 0; font-family: var(--mono); font-size: 14px; }
-  .log li { display: grid; grid-template-columns: 120px 24px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
-  .log .when { color: var(--muted); }
-  .log .star { color: var(--accent); }
-  .log .msg b { font-weight: 500; }
-  .log .msg span { color: var(--muted); }
-  @media (max-width: 640px) { .log li { grid-template-columns: 84px 18px minmax(0, 1fr); } }
-
-  /* Skills + contact */
-  .skills { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px 24px; }
-  .skills h3 { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .skills p { line-height: 1.7; }
-  .contact .big { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 8vw, 6.4rem); letter-spacing: -.045em; line-height: .95; margin-top: 12px; }
-  .contact .big span { color: var(--accent); }
-  .mail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 30px; }
-  .mail code { font-family: var(--mono); font-size: 1rem; user-select: all; word-break: break-all; }
-  footer { margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
-
-  /* Cursor ring (desktop only) */
-  .cursor { position: fixed; z-index: 90; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; opacity: 0; transition: width .25s, height .25s, margin .25s, background .25s; }
-  .cursor.on { opacity: .9; }
-  .cursor.big { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: color-mix(in srgb, var(--accent) 14%, transparent); }
-
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-</style>
-</head><body>
-
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Sections">
   <div class="nav-in">
     <a class="brand" href="#top">Deepak Jain</a>
@@ -256,9 +29,8 @@
   </div>
   <div class="progress" id="progress"></div>
 </nav>
-
-<div class="wrap" id="top">
-  <header class="hero">
+<main id="main">
+<section id="top" class="band hero-band" aria-label="Introduction"><div class="wrap"><div class="hero">
     <div class="hero-copy">
       <p class="kicker">Open to AI application, full-stack and forward-deployed roles · Bengaluru or remote</p>
       <h1 class="display" aria-label="Deepak Jain">
@@ -286,15 +58,15 @@
         <li><b>Personal Assistant Agent:</b> LangGraph prototype that files notes and tasks and answers questions.</li>
       </ul>
     </div>
-  </header>
-
-  <section id="work" aria-labelledby="workTitle">
+  </div></div></section>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>TypeScript</span><span>React</span><span>Node.js</span><span>MongoDB</span><span>Redis</span><span>Docker</span><span>AWS EC2</span><span>Playwright</span><span>GitHub Actions</span><span>Claude Code</span><span>MCP</span><span>LangGraph</span><span>Python</span><span>TypeScript</span><span>React</span><span>Node.js</span><span>MongoDB</span><span>Redis</span><span>Docker</span><span>AWS EC2</span><span>Playwright</span><span>GitHub Actions</span><span>Claude Code</span><span>MCP</span><span>LangGraph</span><span>Python</span></div></div>
+<section id="work" class="band" aria-labelledby="workTitle"><div class="wrap">
     <p class="eyebrow">Selected work</p>
     <h2 class="sec-title" id="workTitle">What I have built.</h2>
     <p class="sec-note">Two live products, three AI and testing projects, and where I started. Open a row for the detail.</p>
     <h3 class="eyebrow grp">Production</h3>
-    <div class="runs" style="margin-top:14px">
-      <details class="run" data-reveal open>
+    <div class="runs">
+      <details class="run" data-reveal data-preview="images/rankotest-landing.webp" open>
         <summary><span class="stat live">Live</span><span class="rname">RankOTest</span><span class="rmeta">Multi-portal assessment and hiring platform · Jan 2026 to now</span><span class="chev" aria-hidden="true">+</span></summary>
         <div class="run-body">
           <div class="txt">
@@ -302,7 +74,7 @@
             <p>It runs the Litmus public hiring drive in colleges, and a job portal with 100+ jobs posted and 400+ trainers registered.</p>
             <div class="links"><a href="https://rankotest.com/" target="_blank" rel="noopener">rankotest.com</a></div>
           </div>
-          <div class="shots"><img src="images/rankotest-landing.png" alt="RankOTest landing page: Run exams, train talent, one platform" loading="lazy"></div>
+          <div class="shots"><figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>rankotest.com</span></div><img src="images/rankotest-landing.webp" alt="RankOTest landing page: Run exams, train talent, one platform" width="1200" height="713" loading="lazy" decoding="async"></figure></div>
         </div>
       </details>
       <details class="run" data-reveal>
@@ -316,8 +88,8 @@
       </details>
       </div>
     <h3 class="eyebrow grp">AI and tools</h3>
-    <div class="runs" style="margin-top:14px">
-      <details class="run" data-reveal>
+    <div class="runs">
+      <details class="run" data-reveal data-preview="images/site-check-live.webp">
         <summary><span class="stat">Demo</span><span class="rname">site-check</span><span class="rmeta">One-command browser, accessibility and link checks · 2026</span><span class="chev" aria-hidden="true">+</span></summary>
         <div class="run-body">
           <div class="txt">
@@ -325,12 +97,12 @@
             <p>Demonstration only: the code is not published.</p>
           </div>
           <div class="shots">
-            <img src="images/site-check-live.png" alt="Terminal: site-check on the live portfolio. All checks pass, 19 links OK, 0 AI calls" loading="lazy">
-            <img src="images/site-check-bugs.png" alt="Terminal: site-check on a copy with planted bugs, listing sideways scroll, console errors, accessibility problems and broken links" loading="lazy">
+            <figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>terminal: site-check</span></div><img src="images/site-check-live.webp" alt="Terminal: site-check on the live portfolio. All checks pass, 19 links OK, 0 AI calls" width="1200" height="327" loading="lazy" decoding="async"></figure>
+            <figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>terminal: site-check</span></div><img src="images/site-check-bugs.webp" alt="Terminal: site-check on a copy with planted bugs, listing sideways scroll, console errors, accessibility problems and broken links" width="1200" height="817" loading="lazy" decoding="async"></figure>
           </div>
         </div>
       </details>
-      <details class="run" data-reveal>
+      <details class="run" data-reveal data-preview="images/cli-1-bug-and-plan.webp">
         <summary><span class="stat public">Public</span><span class="rname">AI Software Engineering Workflow</span><span class="rmeta">CLI: plan, implement, test, review, fix · 2026</span><span class="chev" aria-hidden="true">+</span></summary>
         <div class="run-body">
           <div class="txt">
@@ -338,44 +110,43 @@
             <div class="links"><a href="https://github.com/Deepakjain15/ai-software-engineering-workflow" target="_blank" rel="noopener">github.com/Deepakjain15/ai-software-engineering-workflow</a></div>
           </div>
           <div class="shots">
-            <img src="images/cli-1-bug-and-plan.png" alt="Terminal: the demo test fails, then the CLI writes a plan" loading="lazy">
-            <img src="images/cli-2-implement-test-review.png" alt="Terminal: the CLI applies the fix, the test passes, and the review lists an edge case" loading="lazy">
+            <figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>terminal: ai-dev</span></div><img src="images/cli-1-bug-and-plan.webp" alt="Terminal: the demo test fails, then the CLI writes a plan" width="1200" height="914" loading="lazy" decoding="async"></figure>
+            <figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>terminal: ai-dev</span></div><img src="images/cli-2-implement-test-review.webp" alt="Terminal: the CLI applies the fix, the test passes, and the review lists an edge case" width="1200" height="987" loading="lazy" decoding="async"></figure>
           </div>
         </div>
       </details>
-      <details class="run" data-reveal>
+      <details class="run" data-reveal data-preview="images/assistant-run.webp">
         <summary><span class="stat">Prototype</span><span class="rname">Personal Assistant Agent</span><span class="rmeta">LangGraph flow with Groq · 2026</span><span class="chev" aria-hidden="true">+</span></summary>
         <div class="run-body">
           <div class="txt">
             <p>Sorts each message into a note, a task or a question, files it in the right place, and answers from stored notes. If no model is available it falls back to keyword rules.</p>
             <p>Prototype: the code is not published.</p>
           </div>
-          <div class="shots"><img src="images/assistant-run.png" alt="Terminal: the assistant sorts five messages and answers from the notes" loading="lazy"></div>
+          <div class="shots"><figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>terminal: assistant</span></div><img src="images/assistant-run.webp" alt="Terminal: the assistant sorts five messages and answers from the notes" width="1200" height="610" loading="lazy" decoding="async"></figure></div>
         </div>
       </details>
     </div>
 
-    <h3 class="eyebrow early-title">Where I started</h3>
-    <div class="runs" style="margin-top:14px">
+    <h3 class="eyebrow grp">Where I started</h3>
+    <div class="runs">
       <details class="run quiet" data-reveal>
         <summary><span class="stat">2023</span><span class="rname">FoodyGo</span><span class="rmeta">My first full MERN app, hand-coded. Not deployed.</span><span class="chev" aria-hidden="true">+</span></summary>
         <div class="run-body"><div class="txt"><p>React, Node and Express, MongoDB, JWT login, cart and orders.</p><div class="links"><a href="https://github.com/Deepakjain15/FoodyGo-mernapp" target="_blank" rel="noopener">Code on GitHub</a></div></div></div>
       </details>
-      <details class="run quiet" data-reveal>
+      <details class="run quiet" data-reveal data-preview="images/uttunga.webp">
         <summary><span class="stat">2026</span><span class="rname">UTTUNGA Student Council</span><span class="rmeta">College site, hand-coded. Not deployed.</span><span class="chev" aria-hidden="true">+</span></summary>
-        <div class="run-body"><div class="txt"><p>A Bootstrap front end with a Google Form for registrations.</p><div class="links"><a href="https://github.com/Deepakjain15/UTTUNGA-Student-Council" target="_blank" rel="noopener">Code on GitHub</a></div></div><div class="shots"><img src="images/uttunga.png" alt="UTTUNGA student council home page" loading="lazy"></div></div>
+        <div class="run-body"><div class="txt"><p>A Bootstrap front end with a Google Form for registrations.</p><div class="links"><a href="https://github.com/Deepakjain15/UTTUNGA-Student-Council" target="_blank" rel="noopener">Code on GitHub</a></div></div><div class="shots"><figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>local copy: UTTUNGA</span></div><img src="images/uttunga.webp" alt="UTTUNGA student council home page" width="1200" height="713" loading="lazy" decoding="async"></figure></div></div>
       </details>
-      <details class="run quiet" data-reveal>
+      <details class="run quiet" data-reveal data-preview="images/monsoon-atlas.webp">
         <summary><span class="stat">2026</span><span class="rname">Monsoon Atlas</span><span class="rmeta">Travel site with a weather board and trip planner.</span><span class="chev" aria-hidden="true">+</span></summary>
-        <div class="run-body"><div class="txt"><p>A 4-page responsive site with a live weather board and a trip budget planner.</p><div class="links"><a href="https://github.com/Deepakjain15/Monsoon-atlas" target="_blank" rel="noopener">Code on GitHub</a></div></div><div class="shots"><img src="images/monsoon-atlas.png" alt="Monsoon Atlas home page" loading="lazy"></div></div>
+        <div class="run-body"><div class="txt"><p>A 4-page responsive site with a live weather board and a trip budget planner.</p><div class="links"><a href="https://github.com/Deepakjain15/Monsoon-atlas" target="_blank" rel="noopener">Code on GitHub</a></div></div><div class="shots"><figure class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>local copy: Monsoon Atlas</span></div><img src="images/monsoon-atlas.webp" alt="Monsoon Atlas home page" width="1200" height="713" loading="lazy" decoding="async"></figure></div></div>
       </details>
     </div>
-  </section>
-
-  <section id="journey" aria-labelledby="journeyTitle">
+  </div></section>
+<section id="journey" class="band" aria-labelledby="journeyTitle"><div class="wrap">
     <p class="eyebrow">Log</p>
     <h2 class="sec-title" id="journeyTitle">How I got here.</h2>
-    <p class="sec-note">I learn by building. I started with hand-coded sites, took on a live news website as a freelancer, then joined a real product team. Full role details are on <a href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener" style="color:var(--accent)">LinkedIn</a>.</p>
+    <p class="sec-note">I learn by building. I started with hand-coded sites, took on a live news website as a freelancer, then joined a real product team. Full role details are on <a href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener" class="inline-link">LinkedIn</a>.</p>
     <ol class="log">
       <li data-reveal><span class="when">2023</span><span class="star">*</span><span class="msg"><b>first projects</b> <span>a car listing page, then FoodyGo, my first full MERN app</span></span></li>
       <li data-reveal><span class="when">2024-12</span><span class="star">*</span><span class="msg"><b>freelance: Vidrohi Awaz</b> <span>started on a live news site</span></span></li>
@@ -386,9 +157,8 @@
       <li data-reveal><span class="when">2026</span><span class="star">*</span><span class="msg"><b>building with AI</b> <span>a workflow CLI, site-check, and a LangGraph assistant</span></span></li>
       <li data-reveal><span class="when">next</span><span class="star">*</span><span class="msg"><b>planned: agents that fix their own failures</b> <span>not built yet</span></span></li>
     </ol>
-  </section>
-
-  <section id="skills" aria-labelledby="skillsTitle">
+  </div></section>
+<section id="skills" class="band" aria-labelledby="skillsTitle"><div class="wrap">
     <p class="eyebrow">Stack</p>
     <h2 class="sec-title" id="skillsTitle">What I run on.</h2>
     <div class="skills">
@@ -398,9 +168,8 @@
       <div data-reveal><h3>AI engineering</h3><p>Claude Code, MCP tooling, LangGraph, structured LLM workflows</p></div>
       <div data-reveal><h3>Testing and delivery</h3><p>Playwright, Postman, Docker, AWS EC2, GitHub Actions, CI/CD</p></div>
     </div>
-  </section>
-
-  <section id="checks" aria-labelledby="checksTitle">
+  </div></section>
+<section id="checks" class="band" aria-labelledby="checksTitle"><div class="wrap">
     <div class="checks">
       <div>
         <p class="eyebrow">Proof, not promises</p>
@@ -411,9 +180,8 @@
       </div>
       <ul class="check-list" id="checkList"></ul>
     </div>
-  </section>
-
-  <section id="contact" class="contact" aria-labelledby="contactTitle">
+  </div></section>
+<section id="contact" class="band dark contact" aria-labelledby="contactTitle"><div class="wrap">
     <p class="eyebrow">Contact</p>
     <h2 class="big" id="contactTitle">Let us talk<span>.</span></h2>
     <p class="sec-note">Open to AI application, full-stack and forward-deployed engineering roles in Bengaluru or remote.</p>
@@ -422,318 +190,20 @@
       <button class="btn mag" type="button" id="copy">Copy email</button>
       <a class="btn primary mag" href="mailto:jain.deepak150202@gmail.com">Email me</a>
     </div>
-    <div class="cta" style="margin-top:16px">
+    <div class="cta cta-tight">
       <a class="btn mag" href="resume/Deepak_Jain_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       <a class="btn mag" href="https://www.linkedin.com/in/deepak-jain" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn mag" href="https://github.com/Deepakjain15" target="_blank" rel="noopener">GitHub</a>
     </div>
-  </section>
-
-  <footer><span>Deepak Jain · Bengaluru</span><span>run #<span data-runs>1</span> · built with HTML, CSS and JavaScript</span></footer>
-</div>
-<div class="cursor" id="cursor"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // 3D map of projects and skills. Drag to rotate; click a node to bring it forward.
-  (function () {
-    var stage = document.getElementById("stage"), canvas = document.getElementById("map");
-    var info = document.getElementById("info"), picks = document.getElementById("picks");
-    var fallback = document.getElementById("fallback");
-    function useFallback() { fallback.hidden = false; stage.hidden = true; picks.hidden = true; }
-    if (typeof THREE === "undefined") { useFallback(); return; }
-    var renderer;
-    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); }
-    catch (e) { useFallback(); return; }
-
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var css = getComputedStyle(document.documentElement);
-    function col(n) { return css.getPropertyValue(n).trim() || "#888888"; }
-    var cAccent = col("--accent"), cFg = col("--fg"), cMuted = col("--muted");
-
-    var DATA = [
-      { id: "rank", label: "RankOTest", proj: 1, p: [-0.9, 0.35, 0.5], text: "Production assessment and hiring platform. 40+ releases across 5 portals and 6 user roles." },
-      { id: "flow", label: "AI Workflow CLI", proj: 1, p: [1.2, 0.7, -0.3], text: "TypeScript CLI: plan, implement, test, review, fix. Runs offline with recorded responses." },
-      { id: "asst", label: "Assistant Agent", proj: 1, p: [0.2, -1.1, 0.9], text: "Prototype that sorts messages into notes, tasks and questions, and answers from your notes." },
-      { id: "ts", label: "TypeScript", text: "Used in RankOTest and the workflow CLI." },
-      { id: "react", label: "React", text: "Builds the RankOTest portals." },
-      { id: "node", label: "Node.js", text: "RankOTest backend and APIs." },
-      { id: "mongo", label: "MongoDB", text: "RankOTest data layer." },
-      { id: "redis", label: "Redis", text: "Rate limiting and caching in RankOTest." },
-      { id: "aws", label: "Docker + EC2", text: "Release deploys for RankOTest and Vidrohi Awaz, which run live on Docker and AWS EC2." },
-      { id: "claude", label: "Claude Code", text: "Planning, review and impact analysis, with tests behind every AI change." },
-      { id: "lg", label: "LangGraph", text: "Routes messages in the assistant prototype." },
-      { id: "py", label: "Python", text: "Used for the assistant prototype." }
-    ];
-    var EDGES = [["rank","ts"],["rank","react"],["rank","node"],["rank","mongo"],["rank","redis"],["rank","aws"],["flow","ts"],["flow","claude"],["flow","asst"],["asst","py"],["asst","lg"],["asst","claude"]];
-
-    // Skills sit on a sphere; projects sit inside it.
-    var skills = DATA.filter(function (d) { return !d.proj; });
-    skills.forEach(function (d, i) {
-      var y = 1 - (i / (skills.length - 1)) * 2, r = Math.sqrt(1 - y * y), phi = i * 2.399963;
-      d.p = [Math.cos(phi) * r * 2.8, y * 2.0, Math.sin(phi) * r * 2.8];
-    });
-
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 50);
-    camera.position.z = 8.2;
-    var group = new THREE.Group();
-    scene.add(group);
-
-    var nodes = {}, meshes = [];
-    DATA.forEach(function (d) {
-      var mesh = new THREE.Mesh(new THREE.SphereGeometry(d.proj ? 0.27 : 0.13, 24, 24),
-        new THREE.MeshBasicMaterial({ color: d.proj ? cAccent : cMuted }));
-      mesh.position.set(d.p[0], d.p[1], d.p[2]);
-      mesh.userData.id = d.id;
-      group.add(mesh); meshes.push(mesh);
-      var lbl = document.createElement("span");
-      lbl.className = "lbl" + (d.proj ? " proj" : "");
-      lbl.textContent = d.label;
-      stage.appendChild(lbl);
-      nodes[d.id] = { d: d, mesh: mesh, lbl: lbl, s: 1 };
-    });
-
-    var pts = [];
-    EDGES.forEach(function (e) { pts.push.apply(pts, nodes[e[0]].d.p.concat(nodes[e[1]].d.p)); });
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
-    group.add(new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: cMuted, transparent: true, opacity: 0.35 })));
-
-    var sel = null, follow = false, ty = 0, tx = 0.12, tz = 8.2, dragging = false, moved = 0, lx = 0, ly = 0, raf = 0, running = false;
-    group.rotation.x = 0.12;
-
-    function setInfo(title, text) {
-      info.textContent = "";
-      var b = document.createElement("b"); b.textContent = title;
-      var s = document.createElement("span"); s.textContent = text;
-      info.appendChild(b); info.appendChild(s);
-    }
-    function paint() {
-      Object.keys(nodes).forEach(function (k) {
-        var n = nodes[k];
-        n.mesh.material.color.set(sel === k ? (n.d.proj ? cAccent : cFg) : (n.d.proj ? cAccent : cMuted));
-      });
-      Array.prototype.forEach.call(picks.querySelectorAll("button[data-id]"), function (b) {
-        b.classList.toggle("on", b.getAttribute("data-id") === sel);
-      });
-    }
-    function clear() {
-      sel = null; follow = false; tz = 8.2;
-      setInfo("Drag to rotate. Click a node.", "Large nodes are projects. Lines show what each one uses.");
-      paint();
-    }
-    function select(id) {
-      if (sel === id) { clear(); return; }
-      sel = id; follow = true;
-      var p = nodes[id].d.p;
-      ty = -Math.atan2(p[0], p[2]); tx = 0.12; tz = 6.3;
-      setInfo(nodes[id].d.label, nodes[id].d.text);
-      paint();
-    }
-
-    DATA.filter(function (d) { return d.proj; }).forEach(function (d) {
-      var b = document.createElement("button");
-      b.type = "button"; b.textContent = d.label; b.setAttribute("data-id", d.id);
-      b.addEventListener("click", function () { select(d.id); });
-      picks.appendChild(b);
-    });
-    var reset = document.createElement("button");
-    reset.type = "button"; reset.textContent = "Reset view";
-    reset.addEventListener("click", clear);
-    picks.appendChild(reset);
-
-    var ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), v = new THREE.Vector3();
-    function hit(e) {
-      var r = canvas.getBoundingClientRect();
-      ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-      ray.setFromCamera(ndc, camera);
-      var h = ray.intersectObjects(meshes, false);
-      return h.length ? h[0].object.userData.id : null;
-    }
-    canvas.addEventListener("pointerdown", function (e) {
-      dragging = true; moved = 0; lx = e.clientX; ly = e.clientY;
-      canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing";
-    });
-    canvas.addEventListener("pointermove", function (e) {
-      if (!dragging) { canvas.style.cursor = hit(e) ? "pointer" : "grab"; return; }
-      var dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY;
-      moved += Math.abs(dx) + Math.abs(dy);
-      group.rotation.y += dx * 0.007;
-      group.rotation.x = Math.max(-0.8, Math.min(0.8, group.rotation.x + dy * 0.005));
-      follow = false;
-    });
-    canvas.addEventListener("pointerup", function (e) {
-      dragging = false; canvas.style.cursor = "grab";
-      if (moved < 6) { var id = hit(e); if (id) select(id); else if (sel) clear(); }
-    });
-
-    function resize() {
-      var w = stage.clientWidth, h = stage.clientHeight;
-      if (!w || !h) return;
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h; camera.updateProjectionMatrix();
-    }
-    function place() {
-      var w = stage.clientWidth, h = stage.clientHeight;
-      group.updateMatrixWorld(true);
-      Object.keys(nodes).forEach(function (k) {
-        var n = nodes[k];
-        n.mesh.getWorldPosition(v);
-        var z = v.z;
-        v.project(camera);
-        var x = (v.x * 0.5 + 0.5) * w, y = (-v.y * 0.5 + 0.5) * h;
-        n.lbl.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(-50%," + ((n.d.proj ? 20 : 12) * n.s * (8.2 / camera.position.z)).toFixed(1) + "px)";
-        n.lbl.style.opacity = (sel === k ? 1 : Math.max(0.25, Math.min(1, 0.55 + z * 0.18))).toFixed(2);
-      });
-    }
-    function frame() {
-      raf = requestAnimationFrame(frame);
-      var k = reduce ? 1 : 0.09;
-      if (sel && follow) {
-        var d = ty - group.rotation.y; d = Math.atan2(Math.sin(d), Math.cos(d));
-        group.rotation.y += d * k; group.rotation.x += (tx - group.rotation.x) * k;
-      } else if (!sel && !dragging && !reduce) { group.rotation.y += 0.0022; }
-      camera.position.z += (tz - camera.position.z) * k;
-      Object.keys(nodes).forEach(function (id) {
-        var n = nodes[id], target = sel === id ? 1.6 : 1;
-        n.s += (target - n.s) * k; n.mesh.scale.setScalar(n.s);
-      });
-      place(); renderer.render(scene, camera);
-    }
-    resize();
-    if ("ResizeObserver" in window) new ResizeObserver(resize).observe(stage);
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (es) {
-        var on = es[0].isIntersecting;
-        if (on && !running) { running = true; frame(); }
-        if (!on && running) { running = false; cancelAnimationFrame(raf); }
-      }).observe(stage);
-    } else { running = true; frame(); }
-  })();
-</script>
+  </div></section>
+</main>
+<footer class="band dark"><div class="wrap"><div class="foot"><span>Deepak Jain · Bengaluru</span><span>run #<span data-runs>1</span> · built with HTML, CSS and JavaScript</span></div><p class="wordmark" aria-hidden="true">Deepak Jain</p></div></footer>
+<div class="cursor" id="cursor" data-label=""></div><div class="preview" id="preview" aria-hidden="true"><img alt="" width="1200" height="713"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-(function () {
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  var hasGsap = typeof gsap !== "undefined";
-
-  // Console errors are collected so the "checks" section can report them honestly.
-  var errors = [];
-  window.addEventListener("error", function (e) { errors.push(e.message || "error"); });
-  var origErr = console.error;
-  console.error = function () { errors.push(Array.prototype.slice.call(arguments).join(" ")); origErr.apply(console, arguments); };
-
-  // Run counter, remembered per browser.
-  var runs = 1;
-  try { runs = (parseInt(localStorage.getItem("dj-runs") || "0", 10) || 0) + 1; localStorage.setItem("dj-runs", String(runs)); } catch (e) {}
-  Array.prototype.forEach.call(document.querySelectorAll("[data-runs]"), function (el) { el.textContent = runs; });
-
-  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
-
-  // Hero: headline words slide up, then the rest follows
-  if (hasGsap && !reduce) {
-    gsap.from(".display .w", { yPercent: 115, duration: 1, ease: "power4.out", stagger: 0.09, delay: 0.1 });
-    gsap.from([".kicker", ".role", ".lede", ".hero .cta", ".hero-facts"], { y: 22, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.09, delay: 0.35 });
-    gsap.from(".stage-wrap", { y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.3 });
-  }
-
-  // Smooth scroll (desktop, motion allowed)
-  var lenis = null;
-  if (hasGsap && typeof Lenis !== "undefined" && fine && !reduce) {
-    lenis = new Lenis({ lerp: 0.1 });
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-    gsap.ticker.lagSmoothing(0);
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (a) {
-    a.addEventListener("click", function (e) {
-      var id = a.getAttribute("href"); if (id.length < 2) return;
-      var target = document.querySelector(id); if (!target) return;
-      e.preventDefault();
-      if (lenis) lenis.scrollTo(target, { offset: -70 }); else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-    });
-  });
-
-  // Progress bar, reveals, section titles, counters
-  if (hasGsap && !reduce) {
-    gsap.to("#progress", { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: true } });
-    Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]"), function (el) {
-      gsap.from(el, { y: 30, opacity: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 92%", once: true } });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll(".sec-title, .contact .big"), function (el) {
-      gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 90%", once: true } });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll("[data-count]"), function (el) {
-      var target = parseInt(el.getAttribute("data-count"), 10), suffix = el.getAttribute("data-suffix") || "", o = { v: 0 };
-      ScrollTrigger.create({ trigger: el, start: "top 90%", once: true, onEnter: function () {
-        gsap.to(o, { v: target, duration: 1.4, ease: "power2.out", onUpdate: function () { el.textContent = Math.round(o.v) + suffix; } });
-      } });
-    });
-    window.addEventListener("load", function () { ScrollTrigger.refresh(); });
-  }
-
-  // Live checks: a small in-browser subset of site-check
-  var defs = [
-    ["No sideways scrolling", function () { var d = document.documentElement; return { ok: d.scrollWidth <= d.clientWidth + 1, note: d.scrollWidth + "px content, " + d.clientWidth + "px window" }; }],
-    ["Every image has alt text", function () { var imgs = Array.prototype.slice.call(document.images); var bad = imgs.filter(function (i) { return !i.hasAttribute("alt"); }).length; return { ok: bad === 0, note: imgs.length + " images, " + bad + " missing" }; }],
-    ["One main heading", function () { var n = document.querySelectorAll("h1").length; return { ok: n === 1, note: n + " h1" }; }],
-    ["Headings never skip a level", function () { var hs = Array.prototype.slice.call(document.querySelectorAll("h1,h2,h3,h4")); var prev = 0, skips = 0; hs.forEach(function (h) { var lv = parseInt(h.tagName.charAt(1), 10); if (prev && lv - prev > 1) skips++; prev = lv; }); return { ok: skips === 0, note: hs.length + " headings, " + skips + " skips" }; }],
-    ["Every link has a destination", function () { var as = Array.prototype.slice.call(document.querySelectorAll("a")); var bad = as.filter(function (a) { return !a.getAttribute("href"); }).length; return { ok: bad === 0, note: as.length + " links, " + bad + " empty" }; }],
-    ["No console errors since load", function () { return { ok: errors.length === 0, note: errors.length + " errors" }; }],
-    ["Loaded in under 3 seconds", function () { var n = performance.getEntriesByType && performance.getEntriesByType("navigation")[0]; if (!n || !n.loadEventEnd) return { skip: true, note: "timing not available here" }; var ms = Math.round(n.loadEventEnd); return { ok: ms < 3000, note: ms + " ms" }; }]
-  ];
-  var list = document.getElementById("checkList"), summary = document.getElementById("summary"), runBtn = document.getElementById("runChecks");
-  function resetList() {
-    list.innerHTML = "";
-    defs.forEach(function (d) {
-      var li = document.createElement("li");
-      li.innerHTML = '<span class="ico">o</span><span class="name"></span><span class="note"></span>';
-      li.querySelector(".name").textContent = d[0]; list.appendChild(li);
-    });
-  }
-  resetList();
-  runBtn.addEventListener("click", function () {
-    resetList(); summary.textContent = "Running..."; summary.style.color = ""; runBtn.disabled = true;
-    var t0 = performance.now(), passed = 0, failed = 0, skipped = 0, lis = list.children, i = 0;
-    function step() {
-      if (i >= defs.length) {
-        summary.textContent = passed + " passed, " + failed + " failed" + (skipped ? ", " + skipped + " skipped" : "") + ". Took " + Math.round(performance.now() - t0) + " ms. AI calls: 0. Tokens: 0.";
-        summary.style.color = failed ? "var(--fail)" : "var(--pass)"; runBtn.disabled = false; return;
-      }
-      var r; try { r = defs[i][1](); } catch (e) { r = { ok: false, note: "check crashed" }; }
-      var li = lis[i], ico = li.querySelector(".ico");
-      if (r.skip) { ico.textContent = "-"; skipped++; } else if (r.ok) { ico.textContent = "ok"; li.className = "pass"; passed++; } else { ico.textContent = "x"; li.className = "fail"; failed++; }
-      li.querySelector(".note").textContent = r.note;
-      i++; setTimeout(step, reduce ? 0 : 260);
-    }
-    step();
-  });
-
-  // Copy email
-  var copyBtn = document.getElementById("copy"), emailEl = document.getElementById("email");
-  copyBtn.addEventListener("click", function () {
-    function done(ok) { copyBtn.textContent = ok ? "Copied" : "Press Ctrl+C"; setTimeout(function () { copyBtn.textContent = "Copy email"; }, 1800); }
-    function select() { var r = document.createRange(); r.selectNodeContents(emailEl); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(false); }
-    try { navigator.clipboard.writeText(emailEl.textContent.trim()).then(function () { done(true); }, select); } catch (e) { select(); }
-  });
-
-  // Magnetic buttons and cursor ring (desktop, motion allowed)
-  if (hasGsap && fine && !reduce) {
-    Array.prototype.forEach.call(document.querySelectorAll(".mag"), function (el) {
-      var qx = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3" }), qy = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3" });
-      el.addEventListener("pointermove", function (e) { var r = el.getBoundingClientRect(); qx((e.clientX - r.left - r.width / 2) * 0.22); qy((e.clientY - r.top - r.height / 2) * 0.3); });
-      el.addEventListener("pointerleave", function () { qx(0); qy(0); });
-    });
-    var cur = document.getElementById("cursor"), cx = gsap.quickTo(cur, "x", { duration: 0.25, ease: "power3" }), cy = gsap.quickTo(cur, "y", { duration: 0.25, ease: "power3" });
-    window.addEventListener("pointermove", function (e) { cur.classList.add("on"); cx(e.clientX); cy(e.clientY); });
-    document.addEventListener("pointerover", function (e) { cur.classList.toggle("big", !!e.target.closest("a, button, summary")); });
-    document.documentElement.addEventListener("pointerleave", function () { cur.classList.remove("on"); });
-  }
-})();
-</script>
-</body></html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/js/map.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
